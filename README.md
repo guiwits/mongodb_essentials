@@ -3,18 +3,18 @@ mongodb_essentials
 
 MongoDB Essentials Training Class in San Diego, CA 4/9/14 - 4/11/14
 
-Instructor: Norman Graham
+Instructor: Norman Graham,
 
-example queries:
+example queries:,
 
-db.parents.find ({ "hobbies" : { $elemMatch : { "name" : "Skateboarding", "skill_level" : 1 } } })
-db.places.find ({ "tags" : { $all : ["Springfield", "Bar"] }})
-db.places.find ({ "tags" : { $size : 3 }}
-db.places.find ({ "tags" : { $slice : 2 }})
-db.places.find ({}, { "tags" : { $slice : 2 }}) <-- second doc is projection
-db.places.find ({"tags.1", "Beer"})
+db.parents.find ({ "hobbies" : { $elemMatch : { "name" : "Skateboarding", "skill_level" : 1 } } }),
+db.places.find ({ "tags" : { $all : ["Springfield", "Bar"] }}),
+db.places.find ({ "tags" : { $size : 3 }},
+db.places.find ({ "tags" : { $slice : 2 }}),
+db.places.find ({}, { "tags" : { $slice : 2 }}) <-- second doc is projection,
+db.places.find ({"tags.1", "Beer"}),
 
-update examples:
+update examples:,
 
 db.people.update ({"name" : "Lisa"}, {$set : {"instrument" : "Saxophone"}})
 ^^ will update one
