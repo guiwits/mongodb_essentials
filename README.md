@@ -39,3 +39,24 @@ db.people.update ({"name" : "Lisa"}, {$set : {"friends":10}})
 
 db.people.update ({"name" : "Lisa"}, {$inc : {"friends":1}})
 
+more update examples .... 
+
+db.schools.update({"staff.firstname" : "Edna"}, {$set : {"staff.$.position" : "5th grade teacher"}}) <-- $ is special character that represents element in array that was matched.
+
+db.people.update ({"name":"Bart"}, {$rename : {"age" : "my_new_age" }})
+
+db.places.update ({"name":"Quickie Mart"}, {$push: {tags : ["milk", "eggs"]}})
+
+db.places.update ({"name":"Quickie Mart"}, {$pu: {tags : ["milk"]})}
+
+$addToSet operator example. Adds item but only if it doesn't exist.
+
+db.name.remove({<query>}) - Removes document
+
+db.name.ensureIndex({name : 1}) 1 ascending, -1 descending
+
+Compound indexes:
+
+db.people.ensureIndex({name:1, age:1)
+
+
