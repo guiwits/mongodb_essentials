@@ -204,5 +204,4 @@ MongoDB migrates data to new node
 
 Shard can be a single mongod or a replic set.
 
-Config Servers: 3 stand along mongos that have the same meta data on all config servers
- Make sure you have in production
+Config Servers: Should have 3 are stand alone mongod's that have the same meta data on all config servers. Make sure you have in production
