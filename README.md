@@ -158,7 +158,7 @@ rs.slaveOk() <-- if you want to read from secondary repl server.
 rs.stepDown() <-- if on primary it will become secondary.
 
 rs.isMaster() <-- shows master
-<code>set0:SECONDARY> rs.isMaster()
+set0:SECONDARY> rs.isMaster()
 {
 	"setName" : "set0",
 	"setVersion" : 126531,
@@ -179,4 +179,4 @@ rs.isMaster() <-- shows master
 				"minWireVersion" : 0,
 				"ok" : 1
 }
-</code>
+
