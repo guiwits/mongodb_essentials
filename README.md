@@ -159,7 +159,6 @@ rs.stepDown() <-- if on primary it will become secondary.
 
 rs.isMaster() <-- shows master
 set0:SECONDARY> rs.isMaster()
-
 {
 
 	"setName" : "set0",
@@ -197,7 +196,6 @@ set0:SECONDARY> rs.isMaster()
 				"minWireVersion" : 0,
 
 				"ok" : 1
-
 }
 
 
