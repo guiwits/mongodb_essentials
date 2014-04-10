@@ -59,4 +59,16 @@ Compound indexes:
 
 db.people.ensureIndex({name:1, age:1)
 
+Geospatial indexes:
 
+db.locations.ensureIndex ({lat_long : "2d"})
+
+db.locations.find ({"lat_long" : {$near : [-122.143019, 37.441883]}})
+
+db.locations.find({"lat_long" : {"$withhin" : {"$center" : [[-122, 37], 5]}}})
+
+My exercies from book:
+
+db.scores.find ({$or : [ {"kind" : "quiz"}, {"kind" : "exam"} ] })
+
+db.scores.find ({ "kind" : { $in : ["quiz", "exam"]}})
