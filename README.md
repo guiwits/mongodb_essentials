@@ -104,12 +104,15 @@ Availability and durability ... of the data. Not designed for scaling reads. Use
 Write concerns:
 
 w=0 - No concern but gets a network acknowledge
+
 w=1 - Waits for an error/ack from primary (get last error). Successful write to mongod.
       Data written to mongod in memory. Don't know if it made it to journal or disk/etc. It might only exist in memory. If machine loses power at the moment data won't be durable.
       Default write concern.
+
 j=1 - Sets the journal true and wait for journal to be commmited to disk.
       This is slow. Not generally recommended because there is a disk access in middle
       of writes. It is safer but there is a performance hit.
+
 w>1 - How many mongod's the wright has to be successful for the replica sets. Write to
       memory that is. (w=majority also works)
 
