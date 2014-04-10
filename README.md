@@ -3,6 +3,8 @@ mongodb_essentials
 
 MongoDB Essentials Training Class in San Diego, CA 4/9/14 - 4/11/14
 
+### Day One
+
 Instructor: Norman Graham
 
 example queries:
@@ -81,3 +83,14 @@ Walks the _id and only visits each one once with $snapshot. So if the write affe
 
 Schema Design:
 
+Invite DBA's early to be involved. Schema's tend to happen sooner in MongoDB rather than later as in most RDBMs.
+
+Memory, Disk, I/O, indexes, etc. All factors in what the schema will look like.
+
+Whether to store embedded data positionally (with arrays) or by named fields (with nested docs). This is often a matter of taste, but sometimes relates to what can be queried/indexed efficiently.
+
+Arrays can get large and costly.
+
+When data immutable (or seldomly mutated), it is easier to separate it out into another document.
+
+Got into groups and did a schema exercise to mimic an ecommerce site for products, reviews, rating, price, price history, categories, and the relationships between them.
