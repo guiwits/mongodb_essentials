@@ -182,3 +182,27 @@ set0:SECONDARY> rs.isMaster()
 }
 ```
 
+#####Sharding
+
+Paritioning:
+
+User defines shard key
+
+shard key defines range of data
+
+key space is like points on a line
+
+Range is a segment of that line
+
+MongoS -- think of it like a lightweight router. Apps connect to this.
+
+It queries routed to specific shards
+
+MongoDB balances cluster
+
+MongoDB migrates data to new node
+
+Shard can be a single mongod or a replic set.
+
+Config Servers: 3 stand along mongos that have the same meta data on all config servers
+ Make sure you have in production
