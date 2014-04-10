@@ -158,8 +158,7 @@ rs.slaveOk() <-- if you want to read from secondary repl server.
 rs.stepDown() <-- if on primary it will become secondary.
 
 rs.isMaster() <-- shows master
-`
-set0:SECONDARY> rs.isMaster()
+`set0:SECONDARY> rs.isMaster()
 {
 	"setName" : "set0",
 	"setVersion" : 126531,
