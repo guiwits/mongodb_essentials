@@ -95,3 +95,8 @@ When data immutable (or seldomly mutated), it is easier to separate it out into 
 
 Got into groups and did a schema exercise to mimic an ecommerce site for products, reviews, rating, price, price history, categories, and the relationships between them.
 
+#Replica Sets
+
+Why replication?
+
+Availability and durability ... of the data. Not designed for scaling reads. Use sharding for scaling!!
