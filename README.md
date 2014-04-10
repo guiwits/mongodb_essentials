@@ -143,3 +143,41 @@ No downtime.
 Rolling upgrade/maintenance
 	- Start with secondary
 	- Primary last
+
+var conf = rs.conf()
+edit conf <-- if
+rs.reconfig(conf, {"force": true})
+
+a:PRIMARY> ls() <-- lists data files in current working directory
+
+a:PRIMARY> load ("gen_data.js") <-- runs a script within mongo
+
+rs.slaveOk() <-- if you want to read from secondary repl server. 
+                 Needed if you want to do things on slave. Should only read.
+
+rs.stepDown() <-- if on primary it will become secondary.
+
+rs.isMaster() <-- shows master
+`
+set0:SECONDARY> rs.isMaster()
+{
+	"setName" : "set0",
+	"setVersion" : 126531,
+	"ismaster" : false,
+	"secondary" : true,
+	"hosts" : [
+		"localhost:30003",
+			"localhost:30002",
+				"localhost:30000"
+				],
+				"primary" : "localhost:30002",
+				"me" : "localhost:30003",
+				"maxBsonObjectSize" : 16777216,
+				"maxMessageSizeBytes" : 48000000,
+				"maxWriteBatchSize" : 1000,
+				"localTime" : ISODate("2014-04-10T22:04:41.854Z"),
+				"maxWireVersion" : 2,
+				"minWireVersion" : 0,
+				"ok" : 1
+}
+`
