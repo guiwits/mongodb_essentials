@@ -72,3 +72,8 @@ My exercies from book:
 db.scores.find ({$or : [ {"kind" : "quiz"}, {"kind" : "exam"} ] })
 
 db.scores.find ({ "kind" : { $in : ["quiz", "exam"]}})
+
+Day Two:
+Snapshot a doc if you are worried about a write changing something as you're reading.
+$snapshot is the token. Doesn't come up often but be aware that it could happen.
+Walks the _id and only visits each one once with $snapshot. So if the write affected the doc and moved it to another memory segment that hasn't been scanned yet it won't use it since it already used the _id.
