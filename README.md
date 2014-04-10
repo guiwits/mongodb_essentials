@@ -81,7 +81,7 @@ Snapshot a doc if you are worried about a write changing something as you're rea
 $snapshot is the token. Doesn't come up often but be aware that it could happen.
 Walks the _id and only visits each one once with $snapshot. So if the write affected the doc and moved it to another memory segment that hasn't been scanned yet it won't use it since it already used the _id.
 
-Schema Design:
+#####Schema Design:
 
 Invite DBA's early to be involved. Schema's tend to happen sooner in MongoDB rather than later as in most RDBMs.
 
@@ -94,3 +94,4 @@ Arrays can get large and costly.
 When data immutable (or seldomly mutated), it is easier to separate it out into another document.
 
 Got into groups and did a schema exercise to mimic an ecommerce site for products, reviews, rating, price, price history, categories, and the relationships between them.
+
