@@ -221,5 +221,5 @@ Pipeline Operators:
 
 $match $project $group $unwind $sort $limit $skip $geoNear
 
-check out www.slideshare.net/fullscreen/mongodb/webinar-data-processing-and-agregation-options/1
+check out www.slideshare.net/fullscreen/mongodb/webinar-data-processing-and-aggregation-options/1
 
