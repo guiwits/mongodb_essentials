@@ -159,49 +159,67 @@ rs.stepDown() <-- if on primary it will become secondary.
 
 rs.isMaster() <-- shows master
 ```
-set0:SECONDARY> rs.isMaster()
-{
-	"setName" : "set0",
-	"setVersion" : 126531,
-	"ismaster" : false,
-	"secondary" : true,
-	"hosts" : [
-		"localhost:30003",
-			"localhost:30002",
-				"localhost:30000"
-				],
-				"primary" : "localhost:30002",
-				"me" : "localhost:30003",
-				"maxBsonObjectSize" : 16777216,
-				"maxMessageSizeBytes" : 48000000,
-				"maxWriteBatchSize" : 1000,
-				"localTime" : ISODate("2014-04-10T22:04:41.854Z"),
-				"maxWireVersion" : 2,
-				"minWireVersion" : 0,
-				"ok" : 1
-}
-```
 
-#####Sharding
+#####Mongo backup:
 
-Paritioning:
+mongodump -- check out docs.mongodb.org/manual/reference/program/mongodump
 
-User defines shard key
+Be aware of the forceTableScan option. You can get an inaccurate dump if used on a DB
+that is accepting writes.
 
-shard key defines range of data
+When using a snapshot and the journal is on a diff disk than the db files you need to
+db.fsyncLock() then do the file system snapshot then do the db.fsyncUnlock() and then you can be sure that you have a successful image of data in a moment in time.
 
-key space is like points on a line
+http://docs.mongodb.org/manual/reference/method/db.fsyncLock/
 
-Range is a segment of that line
+In case you have a long running db task that you want to get rid of:
+`````
+db.currentOp()
+db.killOp (opid)
+`````
+When doing a dump on a live mongod make sure and use the --oplog
 
-MongoS -- think of it like a lightweight router. Apps connect to this.
+One issue is when you want to back up a sharded system. The solution to that is one that
+mms has put in place for mmsbackup (mongo backup). mms inserts a noop in all systems at
+a single point in time them looks for those noops before it captures the complete state of a sharding cluster.
 
-It queries routed to specific shards
+mongorestore -- same web but check out mongorestore ....
 
-MongoDB balances cluster
+Kind of the goto for doing backups.
 
-MongoDB migrates data to new node
+In a replica set you ideally want to remove a secondary from the set and perform the
+mongodump.
 
-Shard can be a single mongod or a replic set.
 
-Config Servers: Should have 3 are stand alone mongod's that have the same meta data on all config servers. Make sure you have in production
+
+Montoring:
+mongotop
+mongostat
+Monitoring -- check out mms as mongodb.com.
+
+#####Aggregation
+
+Pre-aggregation Framework:
+MongoDB MapReduce - collection scan and then a reduction stage
+Map --> Reduce --> finalize --> MongoDB -- Map --> .... repeat
+
+Has some speed issues and debugging issues. So Aggregation Framework added.
+
+Everything executed in C++ and against the BSON structures. Limited though as you
+
+can only use aggregation framework provided by mongo.
+
+Plays nice with sharding.
+
+Easier to understand than the MapReduce.
+
+Pipeline type of thought.
+
+.... missed slide :(
+
+Pipeline Operators:
+
+$match $project $group $unwind $sort $limit $skip $geoNear
+
+check out www.slideshare.net/fullscreen/mongodb/webinar-data-processing-and-agregation-options/1
+
